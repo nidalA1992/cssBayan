@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  --black: #222222;
+  --green: #a1ff9b;
+  --purple: #cbbafb;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(var(--green), var(--purple));
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr min(100ch, calc(100% - 3em)) 1fr;
+  padding-block: 2em;
+  column-gap: 1.5em;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(var(--green), var(--purple));
+  transition: scale 700ms ease-out;
+}
+
+.option-list__item:nth-child(1) .option__content {
+  background-image: url("./assets/i-understand-git.jpg");
+}
+
+.option-list__item:nth-child(2) .option__content {
+  background-image: url("./assets/junior-vs-senior.jpg");
+}
+
+.option-list__item:nth-child(3) .option__content {
+  background-image: url("./assets/new-programming-language.webp");
+}
+
+.option-list__item:nth-child(4) .option__content {
+  background-image: url("./assets/web-developers.webp");
+}
+
+.option-list__item:nth-child(5) .option__content {
+  background-image: url("./assets/wtf-dude.webp");
+}
+
+.accordion {
+  grid-column: 2;
+  cursor: pointer;
+}
+
+.options-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.option__input {
+  display: none;
+  border: none;
+  text-align: start;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.option:active .option__title{
+  color: white;
+  background-color: var(--black);
+  transition-property: color, background-color;
+  transition-duration: 500ms;
+}
+
+.option__input-icon {
+  rotate: -90deg;
+  transition: rotate 500ms ease-out, opacity 500ms ease-out;
+}
+
+.option__title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em 2.5em;
+  border-inline: 0.05em solid var(--black);
+}
+
+.option__content {
+  height: 0;
+  opacity: 0;
+  max-height: 370px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition-property: height, opacity;
+  transition-duration: 1000ms;
+  transition-timing-function: ease-out;
+}
+
+.option:has(.option__input:checked) > .option__content {
+  height: 75vw;
+  opacity: 1;
+  border-block: 0.05em solid var(--black);
+}
+
+.option:has(.option__input:checked) .option__input-icon {
+  rotate: 90deg;
+}
+
+
+@media (min-width: 768px) {
+  .option {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body:has(.accordion:hover) .container {
+    scale: 1.025;
+  }
+
+  .option__input-icon {
+    opacity: 0;
+  }
+
+  .container:has(.accordion:hover) .accordion .option__input-icon {
+    opacity: 1;
+  }
+
+  .option {
+    font-size: 1.4rem;
+  }
+
+  .option-list__item:hover .option__content {
+    height: 75vw;
+    opacity: 1;
+  }
+  
+  .option-list__item:hover .option__content {
+    border-block: 0.05em solid var(--black);
+  }
+
+  .option-list__item:hover .option__input-icon {
+    rotate: 90deg;
+  }
+}
