@@ -127,6 +127,7 @@ body {
   rotate: 90deg;
 }
 
+
 @media (min-width: 768px) {
   .option {
     font-size: 1.2rem;
