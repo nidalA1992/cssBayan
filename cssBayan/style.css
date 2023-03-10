@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  --black: #000000;
+  --green: #a1ff9b;
+  --purple: #cbbafb;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(var(--green), var(--purple));
+}
+
+.option-list__item:nth-child(1) .option__content {
+  background-image: url("./assets/i-understand-git.jpg");
+}
+
+.option-list__item:nth-child(2) .option__content {
+  background-image: url("./assets/junior-vs-senior.jpg");
+}
+
+.option-list__item:nth-child(3) .option__content {
+  background-image: url("./assets/new-programming-language.webp");
+}
+
+.option-list__item:nth-child(4) .option__content {
+  background-image: url("./assets/web-developers.webp");
+}
+
+.option-list__item:nth-child(5) .option__content {
+  background-image: url("./assets/wtf-dude.webp");
+}
+
+.accordion {
+  max-width: 85%;
+  cursor: pointer;
+}
+
+.options-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex; 
+  justify-content: space-between;
+  border-inline: 0.05em solid black;
+  padding: 1em 3em;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.option__input {
+  appearance: none;
+  border: none;
+  text-align: start;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: black;
+
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.option:active {
+  color: white;
+  background-color: #333;
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+}
+
+.option__input-icon {
+  rotate: -90deg;
+  transition: rotate 300ms ease-in;
+}
+
+.option__content {
+  height: 0;
+  opacity: 0;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition-property: height, opacity, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in;
+}
+
+
+.option:has(.option__input:checked) + .option__content {
+  height: 220px;
+  border-block: 0.05em solid var(--black);
+  opacity: 1;
+}
+
+
+.option:has(.option__input:checked) .option__input-icon {
+  rotate: 90deg;
+}
